@@ -272,7 +272,7 @@ open class YouTubePlayerView: UIView, WKNavigationDelegate {
     }
 
     fileprivate func playerHTMLPath() -> String {
-        return Bundle(for: YouTubePlayerView.self).path(forResource: "YTPlayer", ofType: "html")!
+        return Bundle(for: YouTubePlayerView.self).path(forResource: "CanelaPlayer", ofType: "html")!
     }
 
     fileprivate func htmlStringWithFilePath(_ path: String) -> String? {
