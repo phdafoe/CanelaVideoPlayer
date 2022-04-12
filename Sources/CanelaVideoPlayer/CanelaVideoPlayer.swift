@@ -259,7 +259,7 @@ open class CanelaVideoPlayer: UIView, WKNavigationDelegate {
     fileprivate func loadWebViewWithParameters(_ parameters: YouTubePlayerParameters) {
 
         // Get HTML from player file in bundle
-        let rawHTMLString = htmlStringWithFilePath(playerHTMLPath())!
+        let rawHTMLString = htmlStringWithFilePath(playerHTMLPath() ?? "")!
 
         // Get JSON serialized parameters string
         let jsonParameters = serializedJSON(parameters as AnyObject)!
@@ -271,8 +271,14 @@ open class CanelaVideoPlayer: UIView, WKNavigationDelegate {
         webView.loadHTMLString(htmlString, baseURL: URL(string: baseURL))
     }
 
-    fileprivate func playerHTMLPath() -> String {
-        return Bundle(for: CanelaVideoPlayer.self).path(forResource: "CanelaPlayer", ofType: "html") ?? ""
+    fileprivate func playerHTMLPath() -> String? {
+//        guard let url = Bundle.main.url(forResource: "CanelaPlayer", withExtension: "html") else {
+//            return nil
+//        }
+//        let aux = Bundle(identifier: "CanelaVideoPlayer")
+//        return Bundle(for: CanelaVideoPlayer.self)
+//            .path(forResource: "CanelaPlayer", ofType: "html") ?? ""
+        return Bundle.main.path(forResource: "CanelaPlayer", ofType: "html")
     }
 
     fileprivate func htmlStringWithFilePath(_ path: String) -> String? {
