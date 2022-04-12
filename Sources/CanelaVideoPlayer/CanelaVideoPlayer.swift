@@ -259,13 +259,13 @@ open class CanelaVideoPlayer: UIView, WKNavigationDelegate {
     fileprivate func loadWebViewWithParameters(_ parameters: YouTubePlayerParameters) {
 
         // Get HTML from player file in bundle
-        let rawHTMLString = htmlStringWithFilePath(playerHTMLPath() ?? "")!
+        let rawHTMLString = htmlStringWithFilePath(playerHTMLPath() ?? "")
 
         // Get JSON serialized parameters string
         let jsonParameters = serializedJSON(parameters as AnyObject)!
 
         // Replace %@ in rawHTMLString with jsonParameters string
-        let htmlString = rawHTMLString.replacingOccurrences(of: "%@", with: jsonParameters)
+        let htmlString = rawHTMLString?.replacingOccurrences(of: "%@", with: jsonParameters) ?? ""
 
         // Load HTML in web view
         webView.loadHTMLString(htmlString, baseURL: URL(string: baseURL))
