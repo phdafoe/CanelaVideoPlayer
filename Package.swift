@@ -22,7 +22,8 @@ let package = Package(
             name: "CanelaVideoPlayer",
             dependencies: [],
             resources: [
-                .copy("Resources/HTML/CanelaPlayer.html")
+                .process("CanelaVideoPlayer/Resources/HTML/CanelaPlayer.html"),
+                .copy("CanelaVideoPlayer/Resources/HTML")
             ]
         ),
         .testTarget(
