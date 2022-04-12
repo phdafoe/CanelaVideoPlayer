@@ -51,17 +51,17 @@ public enum YouTubePlaybackQuality: String {
 }
 
 public protocol YouTubePlayerDelegate: AnyObject {
-    func playerReady(_ videoPlayer: YouTubePlayerView)
-    func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState)
-    func playerQualityChanged(_ videoPlayer: YouTubePlayerView, playbackQuality: YouTubePlaybackQuality)
+    func playerReady(_ videoPlayer: CanelaVideoPlayer)
+    func playerStateChanged(_ videoPlayer: CanelaVideoPlayer, playerState: YouTubePlayerState)
+    func playerQualityChanged(_ videoPlayer: CanelaVideoPlayer, playbackQuality: YouTubePlaybackQuality)
 }
 
 // Make delegate methods optional by providing default implementations
 public extension YouTubePlayerDelegate {
 
-    func playerReady(_ videoPlayer: YouTubePlayerView) {}
-    func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {}
-    func playerQualityChanged(_ videoPlayer: YouTubePlayerView, playbackQuality: YouTubePlaybackQuality) {}
+    func playerReady(_ videoPlayer: CanelaVideoPlayer) {}
+    func playerStateChanged(_ videoPlayer: CanelaVideoPlayer, playerState: YouTubePlayerState) {}
+    func playerQualityChanged(_ videoPlayer: CanelaVideoPlayer, playbackQuality: YouTubePlaybackQuality) {}
 
 }
 
@@ -99,7 +99,7 @@ public func videoIDFromYouTubeURL(_ videoURL: URL) -> String? {
 }
 
 /** Embed and control YouTube videos */
-open class YouTubePlayerView: UIView, WKNavigationDelegate {
+open class CanelaVideoPlayer: UIView, WKNavigationDelegate {
 
     public typealias YouTubePlayerParameters = [String: AnyObject]
     public var baseURL = "about:blank"
@@ -272,7 +272,7 @@ open class YouTubePlayerView: UIView, WKNavigationDelegate {
     }
 
     fileprivate func playerHTMLPath() -> String {
-        return Bundle(for: YouTubePlayerView.self).path(forResource: "CanelaPlayer", ofType: "html")!
+        return Bundle(for: CanelaVideoPlayer.self).path(forResource: "CanelaPlayer", ofType: "html") ?? ""
     }
 
     fileprivate func htmlStringWithFilePath(_ path: String) -> String? {
