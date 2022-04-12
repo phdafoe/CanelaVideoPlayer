@@ -272,13 +272,9 @@ open class CanelaVideoPlayer: UIView, WKNavigationDelegate {
     }
 
     fileprivate func playerHTMLPath() -> String? {
-//        guard let url = Bundle.main.url(forResource: "CanelaPlayer", withExtension: "html") else {
-//            return nil
-//        }
-//        let aux = Bundle(identifier: "CanelaVideoPlayer")
-//        return Bundle(for: CanelaVideoPlayer.self)
-//            .path(forResource: "CanelaPlayer", ofType: "html") ?? ""
-        return Bundle.main.path(forResource: "CanelaPlayer", ofType: "html")
+        return Bundle(for: CanelaVideoPlayer.self)
+            .path(forResource: "CanelaPlayer", ofType: "html") ?? ""
+        //return Bundle.main.path(forResource: "CanelaPlayer", ofType: "html")
     }
 
     fileprivate func htmlStringWithFilePath(_ path: String) -> String? {
